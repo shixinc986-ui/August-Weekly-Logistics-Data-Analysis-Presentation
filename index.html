@@ -19,25 +19,28 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
 <h1>📦 物流数据看板入口</h1>
 <div class="item" onclick="toggleMenu('menuWeek')">📅 周报表 August_report_weekly</div>
 <div class="submenu" id="menuWeek">
-  <a href="August_report_weekly.html">周度总报表</a>
+  <a href="August_report_weekly.html">8月周报表</a>
 </div>
 
 <div class="item" onclick="toggleMenu('menuMonth')">📊 月报表 report-monthly</div>
 <div class="submenu" id="menuMonth">
   <a href="monthly_report/cross_month.html">跨月横向对比</a>
-  <a href="monthly_report/monthly_8.html">8月完整月报</a>
-  <a href="monthly_report/monthly_7.html">7月完整月报</a>
+  <a href="monthly_report/monthly_8.html">8.1-8.31月报表</a>
+  <a href="monthly_report/monthly_7.html">7.1-7.31月报表</a>
 </div>
 
-<a class="item" href="provides_report/dhl.html">DHL物流商看板</a>
-<a class="item" href="provides_report/dx.html">DX物流商看板</a>
-<a class="item" href="provides_report/rm.html">RM物流商看板</a>
-<a class="item" href="provides_report/dpd.html">DPD物流商看板</a>
-<a class="item" href="provides_report/fedex.html">Fedex物流商看板</a>
-<a class="item" href="provides_report/royalmail(菜鸟).html">Royalmail(菜鸟)物流商看板</a>
-<a class="item" href="provides_report/yodel(菜鸟).html">yodel(菜鸟)物流商看板</a>
-<a class="item" href="provides_report/extra_large_parcel_courier.html">Extra Large Parcel Courier物流商看板</a>
-
+<div class="item" onclick="toggleMenu('menuMonth')">🚚 各物流商报表 report-monthly</div>
+<div class="submenu" id="menuProvides">
+  <a href="item" href="provides_report/dhl.html">DHL物流商看板</a>
+  <a href="item" href="provides_report/dx.html">DX物流商看板</a>
+  <a href="item" href="provides_report/rm.html">RM物流商看板</a>
+  <a href="item" href="provides_report/dpd.html">DPD物流商看板</a>
+  <a href="item" href="provides_report/fedex.html">Fedex物流商看板</a>
+  <a href="item" href="provides_report/royalmail(菜鸟).html">Royalmail(菜鸟)物流商看板</a>
+  <a href="item" href="provides_report/yodel(菜鸟).html">yodel(菜鸟)物流商看板</a>
+  <a href="item" href="provides_report/extra_large_parcel_courier.html">Extra Large Parcel Courier物流商看板</a>
+</div>
+  
 <script>
 function toggleMenu(id){
   const dom = document.getElementById(id);
