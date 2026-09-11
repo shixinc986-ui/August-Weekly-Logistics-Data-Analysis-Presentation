@@ -8,11 +8,31 @@
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Microsoft YaHei,sans-serif;}
 body{background:#f5f7fa;padding:40px 20px;max-width:620px;margin:0 auto;}
 h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight:600;}
-.item{display:block;text-align:center;text-decoration:none;padding:16px 24px;margin:14px 0;background:#2563eb;color:#fff;border-radius:10px;font-size:17px;transition:0.25s;cursor:pointer;box-shadow:0 2px 6px #00000018;}
-.item:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 4px 10px #00000022;}
-.submenu{padding:0 12px 12px 12px;display:none;}
-.submenu a{display:block;text-align:center;padding:12px;margin:8px 0;background:#ffffff;color:#2563eb;border-radius:8px;text-decoration:none;border:1px solid #2563eb;font-size:16px;transition:0.2s;}
-.submenu a:hover{background:#eff6ff;}
+.item-sub {
+  display: block;
+  padding: 10px 14px;
+  margin: 6px 12px;
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.item-sub:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.submenu {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 8px 12px 12px 12px;
+}
+
 </style>
 </head>
 <body>
@@ -33,58 +53,58 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
 <div class="submenu" id="menuProvides">
   <div class="item-sub" onclick="toggleMenu('menuDHL')">DHL物流商看板 ▾</div>
   <div class="submenu level3" id="menuDHL">
-    <a href="provides_report/dhl_weekly.html">📅 周报表</a>
+    <a href="provides_report/dhl_weekly.html">📅 周报表(待定)</a>
     <a href="provides_report/dhl_cross.html">跨月横向对比(待定)</a>
-    <a href="provides_report/dhl_month.html">月报表-单月看板(待定)</a>
+    <a href="provides_report/dhl.html">月报表-单月看板</a>
   </div>  
   
 <div class="item-sub" onclick="toggleMenu('menuDX')">DX物流商看板 ▾</div>
 <div class="submenu level3" id="menuDX">
-  <a href="provides_report/dx_weekly.html">📅 周报表</a>
+  <a href="provides_report/dx_weekly.html">📅 周报表(待定)</a>
   <a href="provides_report/dx_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/dx_month.html">月报表-单月看板(待定)</a>
+  <a href="provides_report/dx.html">月报表-单月看板</a>
 </div>  
 
 <div class="item-sub" onclick="toggleMenu('menuSD')">SD物流商看板 ▾</div>
 <div class="submenu level3" id="menuSD">
-  <a href="provides_report/sd_weekly.html">📅 周报表</a>
+  <a href="provides_report/sd_weekly.html">📅 周报表(待定)</a>
   <a href="provides_report/sd_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/sd_month.html">月报表-单月看板(待定)</a>
+  <a href="provides_report/sd.html">月报表-单月看板</a>
 </div>  
 
 <div class="item-sub" onclick="toggleMenu('menuEvri')">Evri物流商看板 ▾</div>
 <div class="submenu level3" id="menuEvri">
-  <a href="provides_report/evri_weekly.html">📅 周报表</a>
+  <a href="provides_report/evri_weekly.html">📅 周报表(待定)</a>
   <a href="provides_report/evri_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/evri_month.html">月报表-单月看板(待定)</a>
+  <a href="provides_report/evri.html">月报表-单月看板</a>
 </div>  
 
 <div class="item-sub" onclick="toggleMenu('menufedex')">Fedex物流商看板 ▾</div>
 <div class="submenu level3" id="menufedex">
-  <a href="provides_report/fedex_weekly.html">📅 周报表</a>
+  <a href="provides_report/fedex_weekly.html">📅 周报表(待定)</a>
   <a href="provides_report/fedex_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/fedex_month.html">月报表-单月看板(待定)</a>
+  <a href="provides_report/fedex.html">月报表-单月看板</a>
 </div>  
 
 <div class="item-sub" onclick="toggleMenu('menuRoyalmail')">Royalmail(菜鸟)物流商看板 ▾</div>
 <div class="submenu level3" id="menuRoyalmail">
-  <a href="provides_report/royalmail_weekly.html">📅 周报表</a>
+  <a href="provides_report/royalmail_weekly.html">📅 周报表(待定)</a>
   <a href="provides_report/royalmail_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/royalmail_month.html">月报表-单月看板(待定)</a>
+  <a href="provides_report/royalmail.html">月报表-单月看板</a>
 </div>  
 
 <div class="item-sub" onclick="toggleMenu('menuYodel')">yodel(菜鸟)物流商看板 ▾</div>
 <div class="submenu level3" id="menuYodel">
-  <a href="provides_report/yodel_weekly.html">📅 周报表</a>
+  <a href="provides_report/yodel_weekly.html">📅 周报表(待定)</a>
   <a href="provides_report/yodel_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/yodel_month.html">月报表-单月看板(待定)</a>
+  <a href="provides_report/yodel.html">月报表-单月看板</a>
 </div>  
 
 <div class="item-sub" onclick="toggleMenu('menuextra_large_parcel_courier')">Extra Large Parcel Courier物流商看板 ▾</div>
 <div class="submenu level3" id="menuextra_large_parcel_courier">
-  <a href="provides_report/extra_large_parcel_courier_weekly.html">📅 周报表</a>
+  <a href="provides_report/extra_large_parcel_courier_weekly.html">📅 周报表(待定)</a>
   <a href="provides_report/extra_large_parcel_courier_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/extra_large_parcel_courier_month.html">月报表-单月看板(待定)</a>
+  <a href="provides_report/extra_large_parcel_courier.html">月报表-单月看板</a>
 </div>
 
   
