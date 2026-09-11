@@ -31,15 +31,62 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
 
 <div class="item" onclick="toggleMenu('menuProvides')">🚚 各物流商报表 report-monthly</div>
 <div class="submenu" id="menuProvides">
-  <a href="provides_report/dhl.html">DHL物流商看板</a>
-  <a href="provides_report/dx.html">DX物流商看板</a>
-  <a href="provides_report/sd.html">SD物流商看板</a>
-  <a href="provides_report/evri.html">Evri物流商看板</a>
-  <a href="provides_report/fedex.html">Fedex物流商看板</a>
-  <a href="provides_report/Royalmail.html">Royalmail(菜鸟)物流商看板</a>
-  <a href="provides_report/Yodel.html">yodel(菜鸟)物流商看板</a>
-  <a href="provides_report/extra_large_parcel_courier.html">Extra Large Parcel Courier物流商看板</a>
+  <div class="item-sub" onclick="toggleMenu('menuDHL')">DHL物流商看板 ▾</div>
+  <div class="submenu level3" id="menuDHL">
+    <a href="provides_report/dhl_weekly.html">📅 周报表</a>
+    <a href="provides_report/dhl_cross.html">跨月横向对比(待定)</a>
+    <a href="provides_report/dhl_month.html">月报表-单月看板(待定)</a>
+  </div>  
+  
+<div class="item-sub" onclick="toggleMenu('menuDX')">DX物流商看板 ▾</div>
+<div class="submenu level3" id="menuDX">
+  <a href="provides_report/dx_weekly.html">📅 周报表</a>
+  <a href="provides_report/dx_cross.html">跨月横向对比(待定)</a>
+  <a href="provides_report/dx_month.html">月报表-单月看板(待定)</a>
+</div>  
+
+<div class="item-sub" onclick="toggleMenu('menuSD')">SD物流商看板 ▾</div>
+<div class="submenu level3" id="menuSD">
+  <a href="provides_report/sd_weekly.html">📅 周报表</a>
+  <a href="provides_report/sd_cross.html">跨月横向对比(待定)</a>
+  <a href="provides_report/sd_month.html">月报表-单月看板(待定)</a>
+</div>  
+
+<div class="item-sub" onclick="toggleMenu('menuEvri')">Evri物流商看板 ▾</div>
+<div class="submenu level3" id="menuEvri">
+  <a href="provides_report/evri_weekly.html">📅 周报表</a>
+  <a href="provides_report/evri_cross.html">跨月横向对比(待定)</a>
+  <a href="provides_report/evri_month.html">月报表-单月看板(待定)</a>
+</div>  
+
+<div class="item-sub" onclick="toggleMenu('menufedex')">Fedex物流商看板 ▾</div>
+<div class="submenu level3" id="menufedex">
+  <a href="provides_report/fedex_weekly.html">📅 周报表</a>
+  <a href="provides_report/fedex_cross.html">跨月横向对比(待定)</a>
+  <a href="provides_report/fedex_month.html">月报表-单月看板(待定)</a>
+</div>  
+
+<div class="item-sub" onclick="toggleMenu('menuRoyalmail')">Royalmail(菜鸟)物流商看板 ▾</div>
+<div class="submenu level3" id="menuRoyalmail">
+  <a href="provides_report/royalmail_weekly.html">📅 周报表</a>
+  <a href="provides_report/royalmail_cross.html">跨月横向对比(待定)</a>
+  <a href="provides_report/royalmail_month.html">月报表-单月看板(待定)</a>
+</div>  
+
+<div class="item-sub" onclick="toggleMenu('menuYodel')">yodel(菜鸟)物流商看板 ▾</div>
+<div class="submenu level3" id="menuYodel">
+  <a href="provides_report/yodel_weekly.html">📅 周报表</a>
+  <a href="provides_report/yodel_cross.html">跨月横向对比(待定)</a>
+  <a href="provides_report/yodel_month.html">月报表-单月看板(待定)</a>
+</div>  
+
+<div class="item-sub" onclick="toggleMenu('menuextra_large_parcel_courier')">Extra Large Parcel Courier物流商看板 ▾</div>
+<div class="submenu level3" id="menuextra_large_parcel_courier">
+  <a href="provides_report/extra_large_parcel_courier_weekly.html">📅 周报表</a>
+  <a href="provides_report/extra_large_parcel_courier_cross.html">跨月横向对比(待定)</a>
+  <a href="provides_report/extra_large_parcel_courier_month.html">月报表-单月看板(待定)</a>
 </div>
+
   
 <script>
 function toggleMenu(id){
