@@ -6,20 +6,27 @@
 <title>物流数据看板入口</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Microsoft YaHei,sans-serif;}
-body{background:#f5f7fa;padding:40px 20px;max-width:600px;margin:0 auto;}
-h1{text-align:center;color:#222;margin-bottom:40px;font-size:24px;}
-.item{display:block;text-align:center;text-decoration:none;padding:16px 24px;margin:14px 0;background:#2563eb;color:#fff;border-radius:8px;font-size:17px;transition:0.2s;}
-.item:hover{background:#1d4ed8;}
+body{background:#f5f7fa;padding:40px 20px;max-width:620px;margin:0 auto;}
+h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight:600;}
+.item{display:block;text-align:center;text-decoration:none;padding:16px 24px;margin:14px 0;background:#2563eb;color:#fff;border-radius:10px;font-size:17px;transition:0.25s;cursor:pointer;box-shadow:0 2px 6px #00000018;}
+.item:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 4px 10px #00000022;}
+.submenu{padding:0 12px 12px 12px;display:none;}
+.submenu a{display:block;text-align:center;padding:12px;margin:8px 0;background:#ffffff;color:#2563eb;border-radius:8px;text-decoration:none;border:1px solid #2563eb;font-size:16px;transition:0.2s;}
+.submenu a:hover{background:#eff6ff;}
 </style>
 </head>
 <body>
-<h1>物流数据看板入口</h1>
-<a class="item" href="August_report_weekly.html">📅 周报表 August_report_weekly</a>
-<a class="item" href="report-monthly.html">📊 月报表 report-monthly</a>
+<h1>📦 物流数据看板入口</h1>
+<div class="item" onclick="toggleMenu('menuWeek')">📅 周报表 August_report_weekly</div>
+<div class="submenu" id="menuWeek">
+  <a href="August_report_weekly.html">周度总报表</a>
+</div>
+
+<div class="item" onclick="toggleMenu('menuMonth')">📊 月报表 report-monthly</div>
 <div class="submenu" id="menuMonth">
-  <a href="monthly_report/cross_month.html">跨月对比</a>
-  <a href="monthly_report/monthly_8.html">8月报表</a>
-  <a href="monthly_report/monthly_7.html">7月报表</a>
+  <a href="monthly_report/cross_month.html">跨月横向对比</a>
+  <a href="monthly_report/monthly_8.html">8月完整月报</a>
+  <a href="monthly_report/monthly_7.html">7月完整月报</a>
 </div>
 
 <a class="item" href="provides_report/dhl.html">DHL物流商看板</a>
@@ -30,5 +37,12 @@ h1{text-align:center;color:#222;margin-bottom:40px;font-size:24px;}
 <a class="item" href="provides_report/royalmail(菜鸟).html">Royalmail(菜鸟)物流商看板</a>
 <a class="item" href="provides_report/yodel(菜鸟).html">yodel(菜鸟)物流商看板</a>
 <a class="item" href="provides_report/extra_large_parcel_courier.html">Extra Large Parcel Courier物流商看板</a>
+
+<script>
+function toggleMenu(id){
+  const dom = document.getElementById(id);
+  dom.style.display = dom.style.display === "block" ? "none" : "block";
+}
+</script>
 </body>
 </html>
