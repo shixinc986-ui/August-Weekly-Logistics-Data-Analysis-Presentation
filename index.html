@@ -11,7 +11,12 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
   
 .item {display:block;text-align:center;text-decoration:none;padding:16px 24px;margin:14px 0;background:#2563eb;color:#fff;border-radius:10px;font-size:17px;transition:0.25s;cursor:pointer;box-shadow:0 2px 6px #00000018;}
 .item:hover {background:#1d4ed8;transform:translateY (-2px);box-shadow:0 4px 10px #00000022;}
-.submenu {padding:0 12px 12px 12px;display:none;}
+
+.submenu {
+  display:none; 
+  margin:8px 0 8px 20px;
+  padding:0 12px 12px 12px;
+}
 .submenu a {display:block;text-align:center;padding:12px;margin:8px 0;background:#ffffff;color:#2563eb;border-radius:8px;text-decoration:none;border:1px solid #2563eb;font-size:16px;transition:0.2s;}
 .submenu a:hover {background:#eff6ff;}
   
@@ -20,23 +25,19 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
   text-align: center;
   padding: 12px;
   margin: 8px 0;
-  background: #dbeafe;          /* 浅蓝灰，比纯白更显字 */
-  color: #1e3a8a;               /* 深蓝文字 */
+  background: #dbeafe;
+  color: #1e3a8a;
   border: 1px solid #d9e6ff;
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
   transition: 0.2s;
 }
-
 .item-sub:hover {
   background: #dbeafe;
   border-color: #bfdbfe;
 }
-
-
 /* 三级子菜单（每个物流商点开后的周/月报表链接） */
-/* 三级菜单里面的链接（DHL展开后的子项） */
 .submenu.level3 a{
   display:block;
   text-align:center;
@@ -53,20 +54,12 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
 .submenu.level3 a:hover{
   background:#eff6ff;
 }
-/* 所有submenu默认隐藏，这一行是解决你当前问题的核心！ */
-.submenu{
-  display:none; 
-  margin:8px 0 8px 20px;
-}
-/* 三级子菜单更深缩进 */
 .submenu.level3{
   margin-left:40px;
 }
 .item-sub{
   cursor:pointer;
 }
-
-
   
 </style>
 </head>
@@ -76,7 +69,6 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
 <div class="submenu" id="menuWeek">
   <a href="August_report_weekly.html">8月周报表</a>
 </div>
-
 <div class="item" onclick="toggleMenu('menuMonth')">📊 月报表 report-monthly</div>
 <div class="submenu" id="menuMonth">
   <a href="monthly_report/cross_month.html">跨月横向对比</a>
@@ -84,8 +76,8 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
   <a href="monthly_report/monthly_7.html">7.1-7.31月报表</a>
 </div>
   
-
 <div class="item" onclick="toggleMenu('menuProvides')">🚚 各物流商报表 report-monthly</div>
+<!-- ========== 所有物流商全部放在这个menuProvides容器里面 ========== -->
 <div class="submenu" id="menuProvides">
   <div class="item-sub" onclick="location.href='provides_compare_monthly.html'">📊 双条件横向对比</div>
   
@@ -95,59 +87,57 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
     <a href="provides_report/dhl_cross.html">跨月横向对比(待定)</a>
     <a href="provides_report/dhl.html">月报表-单月看板</a>
   </div>  
+
+  <div class="item-sub" onclick="toggleMenu('menuDX')">DX物流商看板 ▾</div>
+  <div class="submenu level3" id="menuDX">
+    <a href="provides_report/dx_weekly.html">📅 周报表(待定)</a>
+    <a href="provides_report/dx_cross.html">跨月横向对比(待定)</a>
+    <a href="provides_report/dx.html">月报表-单月看板</a>
+  </div>  
+
+  <div class="item-sub" onclick="toggleMenu('menuSD')">SD物流商看板 ▾</div>
+  <div class="submenu level3" id="menuSD">
+    <a href="provides_report/sd_weekly.html">📅 周报表(待定)</a>
+    <a href="provides_report/sd_cross.html">跨月横向对比(待定)</a>
+    <a href="provides_report/sd.html">月报表-单月看板</a>
+  </div>  
+
+  <div class="item-sub" onclick="toggleMenu('menuEvri')">Evri物流商看板 ▾</div>
+  <div class="submenu level3" id="menuEvri">
+    <a href="provides_report/evri_weekly.html">📅 周报表(待定)</a>
+    <a href="provides_report/evri_cross.html">跨月横向对比(待定)</a>
+    <a href="provides_report/evri.html">月报表-单月看板</a>
+  </div>  
+
+  <div class="item-sub" onclick="toggleMenu('menufedex')">Fedex物流商看板 ▾</div>
+  <div class="submenu level3" id="menufedex">
+    <a href="provides_report/fedex_weekly.html">📅 周报表(待定)</a>
+    <a href="provides_report/fedex_cross.html">跨月横向对比(待定)</a>
+    <a href="provides_report/fedex.html">月报表-单月看板</a>
+  </div>  
+
+  <div class="item-sub" onclick="toggleMenu('menuRoyalmail')">Royalmail(菜鸟)物流商看板 ▾</div>
+  <div class="submenu level3" id="menuRoyalmail">
+    <a href="provides_report/royalmail_weekly.html">📅 周报表(待定)</a>
+    <a href="provides_report/royalmail_cross.html">跨月横向对比(待定)</a>
+    <a href="provides_report/royalmail(菜鸟).html">月报表-单月看板</a>
+  </div>  
+
+  <div class="item-sub" onclick="toggleMenu('menuYodel')">yodel(菜鸟)物流商看板 ▾</div>
+  <div class="submenu level3" id="menuYodel">
+    <a href="provides_report/yodel_weekly.html">📅 周报表(待定)</a>
+    <a href="provides_report/yodel_cross.html">跨月横向对比(待定)</a>
+    <a href="provides_report/yodel(菜鸟).html">月报表-单月看板</a>
+  </div>  
+
+  <div class="item-sub" onclick="toggleMenu('menuextra_large_parcel_courier')">Extra Large Parcel Courier物流商看板 ▾</div>
+  <div class="submenu level3" id="menuextra_large_parcel_courier">
+    <a href="provides_report/extra_large_parcel_courier_weekly.html">📅 周报表(待定)</a>
+    <a href="provides_report/extra_large_parcel_courier_cross.html">跨月横向对比(待定)</a>
+    <a href="provides_report/extra_large_parcel_courier.html">月报表-单月看板</a>
   </div>
+</div> <!-- 在这里才关闭menuProvides！！ -->
 
-  
-<div class="item-sub" onclick="toggleMenu('menuDX')">DX物流商看板 ▾</div>
-<div class="submenu level3" id="menuDX">
-  <a href="provides_report/dx_weekly.html">📅 周报表(待定)</a>
-  <a href="provides_report/dx_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/dx.html">月报表-单月看板</a>
-</div>  
-
-<div class="item-sub" onclick="toggleMenu('menuSD')">SD物流商看板 ▾</div>
-<div class="submenu level3" id="menuSD">
-  <a href="provides_report/sd_weekly.html">📅 周报表(待定)</a>
-  <a href="provides_report/sd_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/sd.html">月报表-单月看板</a>
-</div>  
-
-<div class="item-sub" onclick="toggleMenu('menuEvri')">Evri物流商看板 ▾</div>
-<div class="submenu level3" id="menuEvri">
-  <a href="provides_report/evri_weekly.html">📅 周报表(待定)</a>
-  <a href="provides_report/evri_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/evri.html">月报表-单月看板</a>
-</div>  
-
-<div class="item-sub" onclick="toggleMenu('menufedex')">Fedex物流商看板 ▾</div>
-<div class="submenu level3" id="menufedex">
-  <a href="provides_report/fedex_weekly.html">📅 周报表(待定)</a>
-  <a href="provides_report/fedex_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/fedex.html">月报表-单月看板</a>
-</div>  
-
-<div class="item-sub" onclick="toggleMenu('menuRoyalmail')">Royalmail(菜鸟)物流商看板 ▾</div>
-<div class="submenu level3" id="menuRoyalmail">
-  <a href="provides_report/royalmail_weekly.html">📅 周报表(待定)</a>
-  <a href="provides_report/royalmail_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/royalmail(菜鸟).html">月报表-单月看板</a>
-</div>  
-
-<div class="item-sub" onclick="toggleMenu('menuYodel')">yodel(菜鸟)物流商看板 ▾</div>
-<div class="submenu level3" id="menuYodel">
-  <a href="provides_report/yodel_weekly.html">📅 周报表(待定)</a>
-  <a href="provides_report/yodel_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/yodel(菜鸟).html">月报表-单月看板</a>
-</div>  
-
-<div class="item-sub" onclick="toggleMenu('menuextra_large_parcel_courier')">Extra Large Parcel Courier物流商看板 ▾</div>
-<div class="submenu level3" id="menuextra_large_parcel_courier">
-  <a href="provides_report/extra_large_parcel_courier_weekly.html">📅 周报表(待定)</a>
-  <a href="provides_report/extra_large_parcel_courier_cross.html">跨月横向对比(待定)</a>
-  <a href="provides_report/extra_large_parcel_courier.html">月报表-单月看板</a>
-</div>
-
-  
 <script>
 function toggleMenu(menuId){
   const menu = document.getElementById(menuId);
@@ -157,9 +147,6 @@ function toggleMenu(menuId){
     menu.style.display = "block";
   }
 }
-
-
-
 </script>
 </body>
 </html>
