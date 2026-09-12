@@ -54,25 +54,24 @@ body {
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
 function exportAllTableToExcel(){
   const tables = document.querySelectorAll("table");
   const wb = XLSX.utils.book_new();
-  // 初始化空二维数组，存放全部表格数据
-  let allRows = [];
+  let allData = [];
 
-  tables.forEach(tableDom => {
-    // 把单个html表格转为sheet
-    const tempSheet = XLSX.utils.table_to_sheet(tableDom);
-    // 把sheet转回二维数组
-    const tableData = XLSX.utils.sheet_to_json(tempSheet, {header:1});
-    // 追加到总数据
-    allRows = allRows.concat(tableData);
+  tables.forEach(function(table) {
+    // 核心：官方原生API，把table转sheet
+    const ws = XLSX.utils.table_to_sheet(table);
+    // sheet转二维数组，header:1代表第一行为表头
+    const rows = XLSX.utils.sheet_to_json(ws, {header:1});
+    allData = allData.concat(rows);
   });
 
   // 合并所有表格到同一个工作表
-  const finalSheet = XLSX.utils.aoa_to_sheet(allRows);
-  XLSX.utils.book_append_sheet(wb, finalSheet, "物流看板");
+  const finalWs = XLSX.utils.aoa_to_sheet(allData);
+  XLSX.utils.book_append_sheet(wb, finalWs, "物流看板");
   XLSX.writeFile(wb, "物流看板数据.xlsx");
 }
 </script>
