@@ -73,7 +73,7 @@ function exportAllTableToExcel(){
   // 合并所有表格到同一个工作表
   const finalWs = XLSX.utils.aoa_to_sheet(allData);
   XLSX.utils.book_append_sheet(wb, finalWs, "物流看板");
-  XLSX.writeFile(wb, "物流看板数据.xlsx");
+  XLSX.writeFile(wb, logisticsName +"物流看板数据.xlsx");
 }
 </script>
 
