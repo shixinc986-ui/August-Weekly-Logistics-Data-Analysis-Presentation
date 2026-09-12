@@ -134,10 +134,17 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
 
   
 <script>
-function toggleMenu(id){
-  const dom = document.getElementById(id);
-  dom.style.display = dom.style.display === "block" ? "none" : "block";
+function toggleMenu(menuId){
+  const menu = document.getElementById(menuId);
+  if(menu.style.display === "block"){
+    menu.style.display = "none";
+  }else{
+    menu.style.display = "block";
+  }
 }
+
+
+
 </script>
 </body>
 </html>
