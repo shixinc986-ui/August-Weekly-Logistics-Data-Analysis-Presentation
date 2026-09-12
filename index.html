@@ -36,6 +36,7 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
 
 
 /* 三级子菜单（每个物流商点开后的周/月报表链接） */
+/* 三级菜单里面的链接（DHL展开后的子项） */
 .submenu.level3 a{
   display:block;
   text-align:center;
@@ -52,7 +53,21 @@ h1{text-align:center;color:#1e293b;margin-bottom:32px;font-size:26px;font-weight
 .submenu.level3 a:hover{
   background:#eff6ff;
 }
+/* 所有submenu默认隐藏，这一行是解决你当前问题的核心！ */
+.submenu{
+  display:none; 
+  margin:8px 0 8px 20px;
+}
+/* 三级子菜单更深缩进 */
+.submenu.level3{
+  margin-left:40px;
+}
+.item-sub{
+  cursor:pointer;
+}
 
+
+  
 </style>
 </head>
 <body>
