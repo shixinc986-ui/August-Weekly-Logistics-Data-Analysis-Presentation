@@ -158,21 +158,22 @@ function refreshStatus(){
 }
 // 同时打开两个html
 document.getElementById("openCompareBtn").onclick = function(){
-    // 仓库内全部可用文件清单
+    // 仓库内全部可用文件清单【全部小写】
     const validList = ["dhl","evri","royalmail(菜鸟)","yodel(菜鸟)","sd","fedex","xdp","dx","extra_large_parcel_courier"];
-    let logiA = A.logi;
-    let logiB = B.logi;
+    let logiA = A.logi.toLowerCase(); // 转小写！
+    let logiB = B.logi.toLowerCase(); // 转小写！
     // 校验是否存在该物流报表
     if(!validList.includes(logiA) || !validList.includes(logiB)){
         alert("所选物流商没有对应的报表，请重新选择");
         return;
     }
-    // 去掉月份拼接，直接读取物流商文件名
+    // 拼接文件路径，文件名小写
     const fileA = `provides_report/${logiA}.html`;
     const fileB = `provides_report/${logiB}.html`;
     window.open(fileA, "_blank");
     window.open(fileB, "_blank");
 }
+
 </script>
 </body>
 </html>
