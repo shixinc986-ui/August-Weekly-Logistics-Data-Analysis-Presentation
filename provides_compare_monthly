@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物流商月份双对比看板</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Microsoft YaHei,sans-serif;}
+body{background:#f5f7fa;padding:30px 20px;max-width:1400px;margin:0 auto;}
+h1{text-align:center;color:#222;margin-bottom:30px;font-size:24px;}
+.wrap{display:flex;gap:40px;align-items:flex-start;}
+/* 左右两大对比面板 */
+.left-panel, .right-panel{
+    flex:1;
+    background:#fff;
+    padding:24px;
+    border-radius:10px;
+    box-shadow:0 2px 8px #00000014;
+}
+h3{margin-bottom:16px;color:#333;}
+.section{margin-bottom:22px;}
+.btn-group{display:flex;flex-wrap:wrap;gap:10px;}
+.filter-btn{
+    padding:8px 14px;
+    border:1px solid #cbd5e1;
+    background:#fff;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+.filter-btn.active{
+    background:#2563eb;
+    color:white;
+    border:#2563eb;
+}
+.jump-area{margin-top:36px;text-align:center;}
+#openCompareBtn{
+    padding:12px 28px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+#openCompareBtn:disabled{
+    background:#94a3b8;
+    cursor:not-allowed;
+}
+#tipText{margin-bottom:16px;}
+</style>
+</head>
+<body>
+<h1>📊 双条件横向对比看板</h1>
+<div class="wrap">
+    <!-- ========== 左侧面板：对比项A ========== -->
+    <div class="left-panel">
+        <h3>对比项 A</h3>
+        <div class="section">
+            <h4>选择物流商</h4>
+            <div class="btn-group" id="groupA_logi">
+                <button class="filter-btn" data-val="DHL">DHL</button>
+                <button class="filter-btn" data-val="EVRI">EVRI</button>
+                <button class="filter-btn" data-val="YODEL">YODEL</button>
+                <button class="filter-btn" data-val="RM">RM</button>
+                <button class="filter-btn" data-val="SD">SD</button>
+                <button class="filter-btn" data-val="FEDEX">FEDEX</button>
+                <button class="filter-btn" data-val="XDP">XDP</button>
+                <button class="filter-btn" data-val="DX">DX</button>
+                <button class="filter-btn" data-val="DPD">DPD</button>
+            </div>
+        </div>
+        <div class="section">
+            <h4>选择月份</h4>
+            <div class="btn-group" id="groupA_month">
+                <button class="filter-btn" data-val="August">8月</button>
+                <button class="filter-btn" data-val="July">7月</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 右侧面板：对比项B ========== -->
+    <div class="right-panel">
+        <h3>对比项 B</h3>
+        <div class="section">
+            <h4>选择物流商</h4>
+            <div class="btn-group" id="groupB_logi">
+                <button class="filter-btn" data-val="DHL">DHL</button>
+                <button class="filter-btn" data-val="EVRI">EVRI</button>
+                <button class="filter-btn" data-val="YODEL">YODEL</button>
+                <button class="filter-btn" data-val="RM">RM</button>
+                <button class="filter-btn" data-val="SD">SD</button>
+                <button class="filter-btn" data-val="FEDEX">FEDEX</button>
+                <button class="filter-btn" data-val="XDP">XDP</button>
+                <button class="filter-btn" data-val="DX">DX</button>
+                <button class="filter-btn" data-val="DPD">DPD</button>
+            </div>
+        </div>
+        <div class="section">
+            <h4>选择月份</h4>
+            <div class="btn-group" id="groupB_month">
+                <button class="filter-btn" data-val="August">8月</button>
+                <button class="filter-btn" data-val="July">7月</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jump-area">
+    <p id="tipText">请在左右两边分别选好【物流商+月份】，全部选完后打开对比报表</p>
+    <button id="openCompareBtn" disabled>🔍 同时打开两份报表进行对比</button>
+</div>
+
+<script>
+// 存储两组选择
+let A = {logi:null, month:null};
+let B = {logi:null, month:null};
+
+// 绑定按钮点击
+function bindGroup(btnGroupId, targetObj, keyName){
+    const btns = document.querySelectorAll(`#${btnGroupId} .filter-btn`);
+    btns.forEach(btn=>{
+        btn.onclick = ()=>{
+            btns.forEach(b=>b.classList.remove("active"));
+            btn.classList.add("active");
+            targetObj[keyName] = btn.dataset.val;
+            refreshStatus();
+        }
+    })
+}
+bindGroup("groupA_logi", A, "logi");
+bindGroup("groupA_month", A, "month");
+bindGroup("groupB_logi", B, "logi");
+bindGroup("groupB_month", B, "month");
+
+// 更新按钮启用状态
+function refreshStatus(){
+    const tip = document.getElementById("tipText");
+    const openBtn = document.getElementById("openCompareBtn");
+    if(A.logi && A.month && B.logi && B.month){
+        tip.innerText = `A:${A.logi}-${A.month}｜B:${B.logi}-${B.month}`;
+        openBtn.disabled = false;
+    }else{
+        tip.innerText = "请在左右两边分别选好【物流商+月份】";
+        openBtn.disabled = true;
+    }
+}
+
+// 同时打开两个html
+document.getElementById("openCompareBtn").onclick = function(){
+    const fileA = `${A.logi}_${A.month}.html`;
+    const fileB = `${B.logi}_${B.month}.html`;
+    window.open(fileA, "_blank");
+    window.open(fileB, "_blank");
+}
+</script>
+</body>
+</html>
 
