@@ -33,7 +33,7 @@ tbody tr:nth-child(even) {
 /* ===== 新增：左上角下载按钮样式 ===== */
 .download-btn {
     position: absolute;
-    top:20px;
+    top:10px;
     left:16px;
     padding: 10px 18px;
     background:#2563eb;
@@ -52,21 +52,27 @@ body {
 </style>
 <!-- SheetJS库，导出Excel用 -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    
 <script>
 function exportAllTableToExcel(){
   const tables = document.querySelectorAll("table");
   const wb = XLSX.utils.book_new();
-  let combinedData = [];
+  // 初始化空二维数组，存放全部表格数据
+  let allRows = [];
 
-  tables.forEach(table => {
-    // 把HTML表格转为二维数组
-    const arr = XLSX.utils.table_to_array(table);
-    combinedData = combinedData.concat(arr);
+  tables.forEach(tableDom => {
+    // 把单个html表格转为sheet
+    const tempSheet = XLSX.utils.table_to_sheet(tableDom);
+    // 把sheet转回二维数组
+    const tableData = XLSX.utils.sheet_to_json(tempSheet, {header:1});
+    // 追加到总数据
+    allRows = allRows.concat(tableData);
   });
 
-  // 全部合并放到同一个工作表
-  const ws = XLSX.utils.aoa_to_sheet(combinedData);
-  XLSX.utils.book_append_sheet(wb, ws, "物流看板");
+  // 合并所有表格到同一个工作表
+  const finalSheet = XLSX.utils.aoa_to_sheet(allRows);
+  XLSX.utils.book_append_sheet(wb, finalSheet, "物流看板");
   XLSX.writeFile(wb, "物流看板数据.xlsx");
 }
 </script>
