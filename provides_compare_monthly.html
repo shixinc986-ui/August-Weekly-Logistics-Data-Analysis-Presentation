@@ -6,52 +6,70 @@
 <title>物流商月份双对比看板</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Microsoft YaHei,sans-serif;}
-body{background:#f5f7fa;padding:30px 20px;max-width:1400px;margin:0 auto;}
-h1{text-align:center;color:#222;margin-bottom:30px;font-size:24px;}
-.wrap{display:flex;gap:40px;align-items:flex-start;}
-/* 左右两大对比面板 */
+body{background:#edf2f9;padding:40px 20px;max-width:1500px;margin:0 auto;}
+h1{text-align:center;color:#1e293b;margin-bottom:42px;font-size:28px;font-weight:600;}
+.wrap{display:flex;gap:32px;align-items:flex-start;}
 .left-panel, .right-panel{
     flex:1;
-    background:#fff;
-    padding:24px;
-    border-radius:10px;
-    box-shadow:0 2px 8px #00000014;
+    background:#ffffff;
+    padding:30px;
+    border-radius:14px;
+    box-shadow:0 4px 16px rgba(15, 23, 42, 0.08);
 }
-h3{margin-bottom:16px;color:#333;}
-.section{margin-bottom:22px;}
-.btn-group{display:flex;flex-wrap:wrap;gap:10px;}
+h3{margin-bottom:20px;color:#0f172a;font-size:20px;}
+h4{margin-bottom:14px;color:#475569;font-size:16px;font-weight:500;}
+.section{margin-bottom:26px;}
+.btn-group{display:flex;flex-wrap:wrap;gap:12px;}
 .filter-btn{
-    padding:8px 14px;
+    padding:10px 16px;
     border:1px solid #cbd5e1;
     background:#fff;
-    border-radius:6px;
+    border-radius:8px;
     cursor:pointer;
-    font-size:14px;
+    font-size:15px;
+    transition:0.2s all ease;
+}
+.filter-btn:hover{
+    border-color:#60a5fa;
 }
 .filter-btn.active{
     background:#2563eb;
     color:white;
     border:#2563eb;
+    box-shadow:0 2px 6px #2563eb40;
 }
-.jump-area{margin-top:36px;text-align:center;}
+.jump-area{margin-top:48px;text-align:center;}
+#tipText{
+    font-size:17px;
+    color:#334155;
+    margin-bottom:20px;
+}
 #openCompareBtn{
-    padding:12px 28px;
+    padding:14px 36px;
     background:#2563eb;
     color:white;
     border:none;
-    border-radius:8px;
-    font-size:16px;
+    border-radius:10px;
+    font-size:17px;
     cursor:pointer;
+    transition:0.2s;
+    box-shadow:0 3px 10px #2563eb33;
+}
+#openCompareBtn:hover:not(:disabled){
+    background:#1d4ed8;
 }
 #openCompareBtn:disabled{
     background:#94a3b8;
     cursor:not-allowed;
+    box-shadow:none;
 }
-#tipText{margin-bottom:16px;}
+@media(max-width:820px){
+    .wrap{flex-direction:column;}
+}
 </style>
 </head>
 <body>
-<h1>📊 双条件横向对比看板</h1>
+<h1>📊 物流商月份双对比看板</h1>
 <div class="wrap">
     <!-- ========== 左侧面板：对比项A ========== -->
     <div class="left-panel">
@@ -67,7 +85,6 @@ h3{margin-bottom:16px;color:#333;}
                 <button class="filter-btn" data-val="FEDEX">FEDEX</button>
                 <button class="filter-btn" data-val="XDP">XDP</button>
                 <button class="filter-btn" data-val="DX">DX</button>
-    
             </div>
         </div>
         <div class="section">
@@ -78,7 +95,6 @@ h3{margin-bottom:16px;color:#333;}
             </div>
         </div>
     </div>
-
     <!-- ========== 右侧面板：对比项B ========== -->
     <div class="right-panel">
         <h3>对比项 B</h3>
@@ -104,17 +120,14 @@ h3{margin-bottom:16px;color:#333;}
         </div>
     </div>
 </div>
-
 <div class="jump-area">
     <p id="tipText">请在左右两边分别选好【物流商+月份】，全部选完后打开对比报表</p>
     <button id="openCompareBtn" disabled>🔍 同时打开两份报表进行对比</button>
 </div>
-
 <script>
 // 存储两组选择
 let A = {logi:null, month:null};
 let B = {logi:null, month:null};
-
 // 绑定按钮点击
 function bindGroup(btnGroupId, targetObj, keyName){
     const btns = document.querySelectorAll(`#${btnGroupId} .filter-btn`);
@@ -131,7 +144,6 @@ bindGroup("groupA_logi", A, "logi");
 bindGroup("groupA_month", A, "month");
 bindGroup("groupB_logi", B, "logi");
 bindGroup("groupB_month", B, "month");
-
 // 更新按钮启用状态
 function refreshStatus(){
     const tip = document.getElementById("tipText");
@@ -144,14 +156,12 @@ function refreshStatus(){
         openBtn.disabled = true;
     }
 }
-
 // 同时打开两个html
 document.getElementById("openCompareBtn").onclick = function(){
     // 仓库内全部可用文件清单
     const validList = ["dhl","evri","royalmail(菜鸟)","yodel(菜鸟)","sd","fedex","xdp","dx","extra_large_parcel_courier"];
     let logiA = A.logi;
     let logiB = B.logi;
-
     // 校验是否存在该物流报表
     if(!validList.includes(logiA) || !validList.includes(logiB)){
         alert("所选物流商没有对应的报表，请重新选择");
@@ -163,9 +173,6 @@ document.getElementById("openCompareBtn").onclick = function(){
     window.open(fileA, "_blank");
     window.open(fileB, "_blank");
 }
-
-}
 </script>
 </body>
 </html>
-
