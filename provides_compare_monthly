@@ -148,8 +148,9 @@ function refreshStatus(){
 
 // 同时打开两个html
 document.getElementById("openCompareBtn").onclick = function(){
-    const fileA = `${A.logi}_${A.month}.html`;
-    const fileB = `${B.logi}_${B.month}.html`;
+    const fileA = `provides_report/${A.logi}_${A.month}.html`;
+    const fileB = `provides_report/${B.logi}_${B.month}.html`;
+
     window.open(fileA, "_blank");
     window.open(fileB, "_blank");
 }
